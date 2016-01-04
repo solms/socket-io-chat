@@ -1,0 +1,19 @@
+body, html{
+  width: 100%;
+}
+#input-area {
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+}
+#m {
+  font-size: 1.2em;
+  height: 100%;
+  width: 90%;
+}
+#send-btn {
+  font-size: 1.2em;
+  height: 100%;
+  width: 9%;
+}
