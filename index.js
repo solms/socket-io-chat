@@ -18,13 +18,15 @@ var server = app.listen(port, function(){
 
 var io = require('socket.io')(server);
 var clients = [];
+var usernames = [];
 io.on('connection', function(socket){
-  clients.push(socket);
   console.log('Client with ID=' + socket.id + ' has connected.');
   // Ask client to choose a username
   socket.emit('get username');
   socket.on('get username', function(username){
     console.log('User responded with: ' + username);
+    clients.push(socket);
+    usernames.push(username);
   })
   socket.on('disconnect', function(){
     var index = clients.indexOf(socket);
@@ -34,6 +36,6 @@ io.on('connection', function(socket){
     }
   })
   socket.on('chat message', function(msg){
-    io.emit('chat message', socket.id, msg);
+    io.emit('chat message', usernames[clients.indexOf(socket)], msg);
   });
 });
