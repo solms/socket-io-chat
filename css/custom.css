@@ -17,3 +17,8 @@ body, html{
   height: 100%;
   width: 9%;
 }
+li {
+  list-style-type: none;
+  max-width: 75%;
+  margin-bottom: 1.5px;
+}
