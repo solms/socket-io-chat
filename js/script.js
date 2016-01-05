@@ -6,6 +6,10 @@ $('#input-area').submit(function(){
   return false;
 });
 
+socket.on('get username', function(){
+  socket.emit('get username', 'LittleBoyWonder');
+})
+
 socket.on('chat message', function(id, msg){
   $('#messages').append($('<li>').text(id+': '+msg));
 });
