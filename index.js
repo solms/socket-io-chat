@@ -11,7 +11,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 var server = app.listen(port, function(){
   console.log('Listening on port ' + port + '.');
 });
@@ -24,9 +24,11 @@ io.on('connection', function(socket){
   // Ask client to choose a username
   socket.emit('get username');
   socket.on('get username', function(username){
-    console.log('User responded with: ' + username);
+    // Add the client socket and username
     clients.push(socket);
     usernames.push(username);
+    // Display a welcome message
+    io.emit('chat message', 'Chat Server', 'Welcome to the chat, ' + username + '.');
   })
   socket.on('disconnect', function(){
     var index = clients.indexOf(socket);

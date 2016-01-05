@@ -7,14 +7,14 @@ $('#input-area').submit(function(){
 });
 
 socket.on('get username', function(){
-  $('#connecting').attr('hidden', true);
-  $('#get-username').attr('hidden', false);
+  $('#connecting').fadeOut();
+  $('#get-username').show();
 })
 
 $('#get-username').submit(function(){
   socket.emit('get username', $('#username').val());
-  $('#get-username').attr('hidden', true);
-  $('#chat').attr('hidden', false);
+  $('#get-username').fadeOut();
+  $('#chat').show();
   return false;
 })
 
