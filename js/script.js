@@ -7,7 +7,15 @@ $('#input-area').submit(function(){
 });
 
 socket.on('get username', function(){
-  socket.emit('get username', 'LittleBoyWonder');
+  $('#connecting').attr('hidden', true);
+  $('#get-username').attr('hidden', false);
+})
+
+$('#get-username').submit(function(){
+  socket.emit('get username', $('#username').val());
+  $('#get-username').attr('hidden', true);
+  $('#chat').attr('hidden', false);
+  return false;
 })
 
 socket.on('chat message', function(id, msg){

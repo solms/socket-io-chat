@@ -3,11 +3,24 @@
   <link href="/css/custom.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <ul id="messages"></ul>
-  <form id="input-area" action="">
-    <input type="text" id="m" autocomplete="off" placeholder="Type your message here..." />
-    <button id="send-btn">Send</button>
-  </form>
+  <div id="connecting">
+    <h3><i>...establishing connection...</i></h3>
+  </div>
+
+  <div id="get-username" hidden="true">
+    <form id="username-form" action="">
+      <input type="text" id="username" autocomplete="off" placeholder="Enter your username here..." />
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <div id="chat" hidden="true">
+    <ul id="messages"></ul>
+    <form id="input-area" action="">
+      <input type="text" id="m" autocomplete="off" placeholder="Type your message here..." />
+      <button id="send-btn">Send</button>
+    </form>
+  </div>
 
   <script src="/jquery/jquery.js"></script>
   <script src="/socket.io/socket.io.js"></script>
