@@ -17,8 +17,18 @@ var server = app.listen(port, function(){
 });
 
 var io = require('socket.io')(server);
+var clients = [];
 io.on('connection', function(socket){
+  clients.push(socket);
+  console.log('Client with ID=' + socket.id + ' has connected.');
+  socket.on('disconnect', function(){
+    var index = clients.indexOf(socket);
+    if(index != -1){
+      clients.splice(index, 1);
+      console.log('Client with ID=' + socket.id + ' has disconnected.');
+    }
+  })
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    io.emit('chat message', socket.id, msg);
   });
 });
