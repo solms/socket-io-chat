@@ -11,5 +11,5 @@ socket.on('get username', function(){
 })
 
 socket.on('chat message', function(id, msg){
-  $('#messages').append($('<li>').text(id+': '+msg));
+  $('#messages').append($('<li>').html(id+':&emsp;'+msg));
 });
