@@ -1,6 +1,20 @@
 body, html{
   width: 100%;
+  margin:0;
 }
+
+#connecting{
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+#get-username{
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
 #input-area {
   position: fixed;
   bottom: 0;
@@ -19,6 +33,4 @@ body, html{
 }
 li {
   list-style-type: none;
-  max-width: 75%;
-  margin-bottom: 1.5px;
 }

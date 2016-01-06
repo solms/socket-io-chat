@@ -1,5 +1,8 @@
 var socket = io();
 
+$('#get-username').hide();
+$('#chat').hide();
+
 $('#input-area').submit(function(){
   socket.emit('chat message', $('#m').val());
   $('#m').val('');
@@ -7,14 +10,17 @@ $('#input-area').submit(function(){
 });
 
 socket.on('get username', function(){
-  $('#connecting').fadeOut();
-  $('#get-username').show();
+  $('#connecting').fadeOut(function(){
+      $('#get-username').fadeIn();
+  });
+
 })
 
 $('#get-username').submit(function(){
   socket.emit('get username', $('#username').val());
-  $('#get-username').fadeOut();
-  $('#chat').show();
+  $('#get-username').fadeOut(function(){
+      $('#chat').fadeIn();
+  });
   return false;
 })
 
